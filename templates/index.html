@@ -32,17 +32,15 @@
   <body>
     <nav class="navbar-custom">
       <a href="/admin" class="logo-link">
-        <img
-          src="{{ url_for('static', filename='img/kusna-token.png') }}"
-          width="50"
-        />
+        <img src="/static/img/kusna-token.png" width="45" />
+        <span>KUSNA TOKEN</span>
       </a>
+
+      <button class="menu-toggle" onclick="toggleMenu()">☰</button>
 
       <div class="menu">
         <a href="/">Beranda</a>
-
         <a href="#cek">Cek Tagihan</a>
-
         <a href="#kontak">Hubungi Kami</a>
       </div>
     </nav>
@@ -125,5 +123,10 @@
         <p>08.00 - 20.00 WIB</p>
       </div>
     </footer>
+    <script>
+      function toggleMenu() {
+        document.querySelector(".menu").classList.toggle("show");
+      }
+    </script>
   </body>
 </html>
