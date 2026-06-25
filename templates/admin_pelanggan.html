@@ -20,46 +20,117 @@
   </div>
 </form>
 
-<div class="table-card">
-  <table class="table align-middle">
-    <thead>
-      <tr>
-        <th>No</th>
-        <th>Nama</th>
-        <th>ID PLN</th>
-        <th>No HP</th>
-        <th>Aksi</th>
-      </tr>
-    </thead>
+<form
+  method="POST"
+  action="/admin/hapus-pelanggan-massal"
+  onsubmit="return confirm('Hapus semua pelanggan yang dipilih?');"
+>
+  <div style="margin-bottom: 20px">
+    <button type="submit" class="btn btn-danger">
+      <i class="bi bi-trash-fill"></i>
+      Hapus Terpilih
+    </button>
+  </div>
 
-    <tbody>
-      {% for p in pelanggan %}
-      <tr>
-        <td>{{ loop.index }}</td>
+  <div class="table-card">
+    <div class="table-responsive">
+      <table class="table align-middle">
+        <thead>
+          <tr>
+            <th>
+              <input type="checkbox" id="checkAll" onclick="toggleAll()" />
+            </th>
 
-        <td>{{ p.nama }}</td>
+            <th>No</th>
+            <th>ID PLN</th>
+            <th>Nama</th>
+            <th>No HP</th>
+            <th>Aksi</th>
+          </tr>
+        </thead>
 
-        <td>{{ p.id_pln }}</td>
+        <tbody>
+          {% for p in pelanggan %}
+          <tr>
+            <td>
+              <input
+                type="checkbox"
+                name="pelanggan_ids"
+                value="{{ p.id }}"
+                class="row-check"
+              />
+            </td>
 
-        <td>{{ p.hp }}</td>
+            <td>{{ loop.index }}</td>
 
-        <td>
-          <a href="/admin/edit-pelanggan/{{ p.id }}" class="btn-icon edit">
-            <i class="bi bi-pencil"></i>
-          </a>
+            <td>{{ p.id_pln }}</td>
 
-          <a
-            href="/admin/hapus-pelanggan/{{ p.id }}"
-            class="btn-icon delete"
-            onclick="return confirm('Hapus pelanggan ini?');"
-          >
-            <i class="bi bi-trash"></i>
-          </a>
-        </td>
-      </tr>
-      {% endfor %}
-    </tbody>
-  </table>
+            <td>{{ p.nama }}</td>
+
+            <td>{{ p.hp or '-' }}</td>
+
+            <td>
+              <a href="/admin/edit-pelanggan/{{ p.id }}" class="btn-icon edit">
+                <i class="bi bi-pencil"></i>
+              </a>
+
+              <a
+                href="/admin/hapus-pelanggan/{{ p.id }}"
+                class="btn-icon delete"
+                onclick="return confirm('Hapus pelanggan ini?');"
+              >
+                <i class="bi bi-trash"></i>
+              </a>
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</form>
+
+<div class="pelanggan-mobile">
+  {% for p in pelanggan %}
+
+  <div class="mobile-card">
+    <div class="mobile-header">
+      <div>
+        <h4>{{ p.nama }}</h4>
+        <small>ID PLN: {{ p.id_pln }}</small>
+      </div>
+    </div>
+
+    <div class="mobile-total">{{ p.hp or '-' }}</div>
+
+    <div class="mobile-actions">
+      <a href="/admin/edit-pelanggan/{{ p.id }}" class="btn-edit">
+        <i class="bi bi-pencil-fill"></i>
+      </a>
+
+      <a
+        href="/admin/hapus-pelanggan/{{ p.id }}"
+        class="btn-hapus"
+        onclick="return confirm('Hapus pelanggan ini?');"
+      >
+        <i class="bi bi-trash-fill"></i>
+      </a>
+    </div>
+  </div>
+
+  {% endfor %}
 </div>
+
+<script>
+  function toggleAll() {
+    let master = document.getElementById("checkAll");
+
+    let checks = document.querySelectorAll(".row-check");
+
+    checks.forEach(function (item) {
+      item.checked = master.checked;
+    });
+  }
+</script>
 
 {% endblock %}

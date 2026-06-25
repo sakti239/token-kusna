@@ -430,12 +430,38 @@ def keuangan():
         active_page="keuangan"
     )
     
+
+    
 @app.route("/logout")
 def logout():
 
     session.clear()
 
     return redirect("/")
+
+@app.route(
+    "/admin/hapus-pelanggan-massal",
+    methods=["POST"]
+)
+def hapus_pelanggan_massal():
+
+    if not session.get("admin"):
+        return redirect("/login")
+
+    ids = request.form.getlist(
+        "pelanggan_ids"
+    )
+
+    for id in ids:
+
+        pelanggan = Pelanggan.query.get(id)
+
+        if pelanggan:
+            db.session.delete(pelanggan)
+
+    db.session.commit()
+
+    return redirect("/admin/pelanggan")
 
 
 if __name__ == "__main__":
