@@ -1,0 +1,97 @@
+{% extends "admin_layout.html" %} {% block content %}
+
+<h2 class="mb-4">Keuangan</h2>
+<form method="GET" class="filter-keuangan">
+  <select name="bulan">
+    <option value="">Semua Bulan</option>
+
+    <option value="Januari">Januari</option>
+    <option value="Februari">Februari</option>
+    <option value="Maret">Maret</option>
+    <option value="April">April</option>
+    <option value="Mei">Mei</option>
+    <option value="Juni">Juni</option>
+    <option value="Juli">Juli</option>
+    <option value="Agustus">Agustus</option>
+    <option value="September">September</option>
+    <option value="Oktober">Oktober</option>
+    <option value="November">November</option>
+    <option value="Desember">Desember</option>
+  </select>
+
+  <select name="tahun">
+    <option value="">Semua Tahun</option>
+
+    <option value="2025">2025</option>
+    <option value="2026">2026</option>
+    <option value="2027">2027</option>
+    <option value="2028">2028</option>
+  </select>
+
+  <button type="submit" class="btn-primary-custom">Filter</button>
+</form>
+
+<div class="finance-grid">
+  <div class="finance-card blue">
+    <small>Modal Awal</small>
+    <h3>Rp 2.500.000</h3>
+  </div>
+
+  <div class="finance-card green">
+    <small>Total Omset</small>
+    <h3>Rp {{ "{:,}".format(total_tagihan) }}</h3>
+  </div>
+
+  <div class="finance-card success">
+    <small>Total Keuntungan</small>
+    <h3>Rp {{ "{:,}".format(keuntungan) }}</h3>
+  </div>
+</div>
+
+<div class="finance-row">
+  <div class="summary-card">
+    <h5>Ringkasan Keuangan</h5>
+
+    <table>
+      <tr>
+        <td>Total Tagihan</td>
+        <td>Rp {{ "{:,}".format(total_tagihan) }}</td>
+      </tr>
+
+      <tr>
+        <td>Total Lunas</td>
+        <td>Rp {{ "{:,}".format(total_lunas) }}</td>
+      </tr>
+
+      <tr>
+        <td>Total Belum Bayar</td>
+        <td>Rp {{ "{:,}".format(total_belum) }}</td>
+      </tr>
+
+      <tr>
+        <td>Keuntungan</td>
+        <td class="profit">Rp {{ "{:,}".format(keuntungan) }}</td>
+      </tr>
+    </table>
+  </div>
+
+  <div class="summary-card">
+    <h5>Persentase Status</h5>
+
+    <div class="progress-circle">
+      <div class="circle">{{ persen_lunas }}%</div>
+    </div>
+
+    <div class="legend">
+      <span class="green-dot"></span>
+      Lunas {{ persen_lunas }}%
+    </div>
+
+    <div class="legend">
+      <span class="red-dot"></span>
+      Belum Bayar {{ persen_belum }}%
+    </div>
+  </div>
+</div>
+
+{% endblock %}

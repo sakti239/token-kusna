@@ -1,0 +1,46 @@
+{% extends "admin_layout.html" %} {% block content %}
+
+<div class="page-header">
+  <div>
+    <h2>Tambah Pelanggan</h2>
+    <p>Tambahkan data pelanggan baru.</p>
+  </div>
+
+  <a href="/admin/pelanggan" class="btn-kembali">
+    <i class="bi bi-arrow-left"></i>
+    Kembali
+  </a>
+</div>
+
+<div class="form-card">
+  <form method="POST">
+    <div class="mb-3">
+      <label>Nama Pelanggan</label>
+      <input
+        type="text"
+        name="nama"
+        class="form-control"
+        placeholder="Contoh: Pak Asep"
+        required
+      />
+    </div>
+
+    <div class="mb-4">
+      <label>ID PLN</label>
+      <input
+        type="text"
+        name="id_pln"
+        class="form-control"
+        placeholder="123456789012"
+        required
+      />
+    </div>
+
+    <button type="submit" class="btn-simpan">
+      <i class="bi bi-check-circle"></i>
+      Simpan Pelanggan
+    </button>
+  </form>
+</div>
+
+{% endblock %}

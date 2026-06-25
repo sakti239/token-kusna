@@ -1,0 +1,112 @@
+{% extends "admin_layout.html" %} {% block content %}
+
+<h2 class="fw-bold mb-4">Dashboard</h2>
+
+<!-- Statistik -->
+<div class="row g-4">
+  <div class="col-md-3">
+    <div class="stat-card">
+      <p>Total Pelanggan</p>
+      <h2 class="text-primary">{{ total_pelanggan }}</h2>
+      <small>Pelanggan</small>
+    </div>
+  </div>
+
+  <div class="col-md-3">
+    <div class="stat-card">
+      <p>Tagihan Belum Bayar</p>
+      <h2 class="text-warning">{{ belum }}</h2>
+      <small>Tagihan</small>
+    </div>
+  </div>
+
+  <div class="col-md-3">
+    <div class="stat-card">
+      <p>Tagihan Lunas</p>
+      <h2 class="text-success">{{ lunas }}</h2>
+      <small>Tagihan</small>
+    </div>
+  </div>
+
+  <div class="col-md-3">
+    <div class="stat-card">
+      <p>Total Keuntungan</p>
+      <h2 class="text-primary">Rp {{ keuntungan }}</h2>
+      <small>Bulan ini</small>
+    </div>
+  </div>
+</div>
+
+<!-- Grafik + Tagihan Terbaru -->
+<div class="row mt-4">
+  <!-- Grafik -->
+  <div class="col-lg-7">
+    <div class="panel">
+      <h5>Tagihan 6 Bulan Terakhir</h5>
+
+      <canvas id="grafikTagihan"></canvas>
+    </div>
+  </div>
+
+  <!-- Tagihan Terbaru -->
+  <div class="col-lg-5">
+    <div class="panel">
+      <h5>Tagihan Terbaru</h5>
+
+      <table class="table">
+        <tbody>
+          {% for t in tagihan_terbaru %}
+
+          <tr>
+            <td>
+              <strong>{{ t.nama }}</strong>
+
+              <br />
+
+              <small>{{ t.bulan }}</small>
+            </td>
+
+            <td>Rp {{ t.total }}</td>
+
+            <td>
+              {% if t.status == "Sudah Dibayar" %}
+
+              <span class="badge-lunas"> Lunas </span>
+
+              {% else %}
+
+              <span class="badge-belum"> Belum Bayar </span>
+
+              {% endif %}
+            </td>
+          </tr>
+
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- Chart JS -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script>
+  const ctx = document.getElementById("grafikTagihan");
+
+  new Chart(ctx, {
+    type: "line",
+    data: {
+      labels: ["Feb", "Mar", "Apr", "Mei", "Jun", "Jul"],
+      datasets: [
+        {
+          label: "Omset",
+          data: [12, 18, 15, 24, 22, 35],
+          tension: 0.4,
+        },
+      ],
+    },
+  });
+</script>
+
+{% endblock %}

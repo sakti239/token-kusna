@@ -1,0 +1,547 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+body {
+  background: #f4f7fc;
+}
+
+.logo-link {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+}
+
+.logo-link img {
+  transition: 0.3s;
+}
+
+.logo-link:hover img {
+  transform: scale(1.08);
+}
+.navbar-custom {
+  background: white;
+
+  height: 70px;
+
+  display: flex;
+
+  justify-content: space-between;
+
+  align-items: center;
+
+  padding: 0 40px;
+
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+}
+
+.logo {
+  color: #0d47a1;
+
+  font-weight: bold;
+
+  font-size: 24px;
+}
+
+.menu {
+  display: flex;
+
+  gap: 30px;
+}
+
+.menu a {
+  text-decoration: none;
+
+  color: #444;
+}
+
+.hero {
+  height: 500px;
+
+  background: url("/static/img/banner-pln.jpg");
+
+  background-size: cover;
+
+  background-position: center;
+}
+
+.overlay {
+  width: 100%;
+  height: 100%;
+
+  background: rgba(255, 255, 255, 0.7);
+
+  display: flex;
+
+  flex-direction: column;
+
+  justify-content: center;
+
+  align-items: center;
+}
+
+.overlay h1 {
+  color: #0d47a1;
+
+  font-size: 64px;
+
+  font-weight: 800;
+
+  letter-spacing: 1px;
+
+  margin-bottom: 10px;
+}
+
+.tagihan-belum {
+  margin-top: 20px;
+
+  background: #fff;
+
+  border: 1px solid #eee;
+
+  border-radius: 15px;
+
+  padding: 20px;
+}
+
+.detail-row {
+  display: flex;
+
+  justify-content: space-between;
+
+  margin-bottom: 12px;
+}
+
+.detail-row.total {
+  font-size: 20px;
+
+  font-weight: 700;
+
+  color: #dc3545;
+}
+.overlay h3 {
+  font-size: 30px;
+
+  font-weight: 600;
+
+  color: #1e293b;
+
+  margin-bottom: 10px;
+}
+
+.overlay p {
+  font-size: 18px;
+
+  color: #64748b;
+
+  font-weight: 400;
+}
+.menu a {
+  font-size: 15px;
+
+  font-weight: 500;
+
+  color: #475569;
+
+  transition: 0.3s;
+}
+
+.menu a:hover {
+  color: #1565c0;
+}
+
+.judul-cek {
+  font-size: 28px;
+
+  font-weight: 700;
+
+  color: #0f172a;
+}
+
+.cek-card button {
+  font-weight: 600;
+
+  letter-spacing: 0.5px;
+}
+
+.cek-card {
+  background: white;
+
+  width: 500px;
+
+  padding: 30px;
+
+  border-radius: 20px;
+
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+
+  margin-top: 20px;
+}
+
+.cek-card input {
+  width: 100%;
+
+  padding: 14px;
+
+  border: 1px solid #ddd;
+
+  border-radius: 10px;
+
+  margin-top: 10px;
+}
+
+.cek-card button {
+  width: 100%;
+
+  margin-top: 15px;
+
+  background: #1565c0;
+
+  color: white;
+
+  border: none;
+
+  padding: 15px;
+
+  border-radius: 10px;
+}
+
+.fitur {
+  display: flex;
+
+  justify-content: center;
+
+  gap: 60px;
+
+  padding: 60px;
+}
+
+.fitur-item {
+  text-align: center;
+
+  max-width: 250px;
+}
+
+footer {
+  background: #0d47a1;
+
+  color: white;
+
+  display: flex;
+
+  justify-content: space-around;
+
+  padding: 40px;
+}
+.judul-cek {
+  color: #0d47a1;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.fitur-icon {
+  font-size: 55px;
+
+  color: #1565c0;
+
+  margin-bottom: 15px;
+
+  display: block;
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+.back-link {
+  color: #1565c0;
+
+  text-decoration: none;
+
+  font-weight: 600;
+}
+
+.tagihan-card {
+  background: white;
+
+  border-radius: 20px;
+
+  padding: 30px;
+
+  box-shadow: 0 5px 25px rgba(0, 0, 0, 0.08);
+
+  margin-top: 20px;
+}
+
+.header-pelanggan {
+  display: flex;
+
+  justify-content: space-between;
+
+  align-items: center;
+}
+
+.profil {
+  display: flex;
+
+  gap: 15px;
+
+  align-items: center;
+}
+
+.profil i {
+  font-size: 65px;
+
+  color: #1565c0;
+}
+
+.profil h3 {
+  margin: 0;
+}
+
+.profil p {
+  margin: 0;
+  color: #666;
+}
+
+.bulan {
+  background: #e8f0ff;
+
+  color: #1565c0;
+
+  font-weight: 600;
+
+  padding: 10px 15px;
+
+  border-radius: 10px;
+}
+
+.row-detail {
+  display: flex;
+
+  justify-content: space-between;
+
+  margin: 15px 0;
+}
+
+.total {
+  display: flex;
+
+  justify-content: space-between;
+
+  font-size: 26px;
+
+  font-weight: bold;
+
+  color: #1565c0;
+}
+
+.status-belum {
+  margin-top: 25px;
+
+  background: #fff1f1;
+
+  color: #dc3545;
+
+  text-align: center;
+
+  padding: 20px;
+
+  border-radius: 15px;
+
+  font-weight: bold;
+}
+
+.status-lunas {
+  margin-top: 25px;
+
+  background: #e9fff0;
+
+  color: #198754;
+
+  text-align: center;
+
+  padding: 20px;
+
+  border-radius: 15px;
+
+  font-weight: bold;
+}
+
+.hubungi {
+  margin-top: 25px;
+
+  background: white;
+
+  border-radius: 15px;
+
+  padding: 20px;
+
+  display: flex;
+
+  justify-content: space-between;
+
+  align-items: center;
+
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+}
+
+.status-section {
+  text-align: center;
+
+  margin-top: 20px;
+}
+
+.btn-nota {
+  display: inline-block;
+
+  margin-top: 20px;
+
+  background: #1565c0;
+
+  color: white;
+
+  padding: 12px 25px;
+
+  border-radius: 10px;
+
+  text-decoration: none;
+
+  font-weight: 600;
+}
+
+.btn-nota:hover {
+  background: #0d47a1;
+
+  color: white;
+}
+
+/*NOtA*/
+.nota-page {
+  background: #f5f7fb;
+}
+
+.success-box {
+  background: #eaf8ee;
+
+  color: #198754;
+
+  padding: 20px;
+
+  border-radius: 15px;
+
+  margin-bottom: 30px;
+
+  text-align: left;
+
+  font-weight: 600;
+}
+
+.success-box i {
+  font-size: 22px;
+
+  margin-right: 8px;
+}
+
+.nota-wrapper {
+  display: flex;
+
+  justify-content: center;
+}
+
+.nota-card {
+  width: 450px;
+
+  background: white;
+
+  padding: 35px;
+
+  border-radius: 20px;
+
+  box-shadow: 0 5px 30px rgba(0, 0, 0, 0.08);
+
+  position: relative;
+}
+
+.nota-card h2 {
+  text-align: center;
+
+  color: #0d47a1;
+
+  font-weight: 700;
+}
+
+.subtitle {
+  text-align: center;
+
+  color: #666;
+}
+
+.nota-row {
+  display: flex;
+
+  justify-content: space-between;
+
+  margin: 12px 0;
+}
+
+.total-row {
+  font-size: 22px;
+
+  font-weight: bold;
+
+  color: #1565c0;
+}
+
+.status-row {
+  font-weight: bold;
+}
+
+.lunas {
+  color: #198754;
+}
+
+.thanks {
+  text-align: center;
+
+  color: #666;
+
+  margin-top: 25px;
+}
+
+.button-group {
+  display: flex;
+
+  justify-content: center;
+
+  gap: 15px;
+
+  margin-top: 30px;
+}
+
+.nota-card::before,
+.nota-card::after {
+  content: "";
+
+  position: absolute;
+
+  left: 0;
+  right: 0;
+
+  height: 12px;
+
+  background: radial-gradient(circle at 10px, transparent 10px, white 11px);
+}
+
+.nota-card::before {
+  top: -6px;
+}
+
+.nota-card::after {
+  bottom: -6px;
+}

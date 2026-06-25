@@ -1,0 +1,67 @@
+{% extends "admin_layout.html" %} {% block content %}
+
+<div class="detail-card">
+  <div class="detail-header">
+    <h3>
+      <i class="bi bi-receipt"></i>
+      Detail Tagihan
+    </h3>
+
+    {% if tagihan.status == "Sudah Dibayar" %}
+    <span class="status-badge status-lunas"> LUNAS </span>
+    {% else %}
+    <span class="status-badge status-belum"> BELUM BAYAR </span>
+    {% endif %}
+  </div>
+
+  <div class="detail-info">
+    <div class="detail-label">Nama Pelanggan</div>
+    <div class="detail-value">{{ tagihan.pelanggan.nama }}</div>
+  </div>
+
+  <div class="detail-info">
+    <div class="detail-label">ID PLN</div>
+    <div class="detail-value">{{ tagihan.pelanggan.id_pln }}</div>
+  </div>
+
+  <div class="detail-info">
+    <div class="detail-label">Periode</div>
+    <div class="detail-value">{{ tagihan.bulan }} {{ tagihan.tahun }}</div>
+  </div>
+
+  <div class="detail-info">
+    <div class="detail-label">Tagihan PLN</div>
+    <div class="detail-value">Rp {{ "{:,}".format(tagihan.tagihan_pln) }}</div>
+  </div>
+
+  <div class="detail-info">
+    <div class="detail-label">Biaya Admin</div>
+    <div class="detail-value">Rp {{ "{:,}".format(tagihan.admin) }}</div>
+  </div>
+
+  <div class="total-box">
+    <small>Total Bayar</small>
+    <h4>Rp {{ "{:,}".format(tagihan.total) }}</h4>
+  </div>
+
+  <div class="action-area">
+    {% if tagihan.status != "Sudah Dibayar" %}
+    <a href="/admin/lunas/{{ tagihan.id }}" class="btn btn-lunas">
+      <i class="bi bi-check-circle"></i>
+      Tandai Lunas
+    </a>
+    {% endif %}
+
+    <a href="/nota/{{ tagihan.id }}" target="_blank" class="btn btn-primary">
+      <i class="bi bi-printer"></i>
+      Cetak Nota
+    </a>
+
+    <a href="/admin/tagihan" class="btn btn-kembali">
+      <i class="bi bi-arrow-left"></i>
+      Kembali
+    </a>
+  </div>
+</div>
+
+{% endblock %}
