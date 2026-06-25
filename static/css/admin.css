@@ -139,6 +139,37 @@ STAT CARD
 .stat-card h2 {
   font-size: 34px;
   font-weight: 700;
+  word-break: break-word;
+}
+
+@media (max-width: 768px) {
+  .stat-card h2 {
+    font-size: 22px;
+  }
+}
+
+@media (max-width: 768px) {
+  .laporan-filter {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .laporan-filter select {
+    width: 100%;
+  }
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.pagination a {
+  min-width: 40px;
+  height: 40px;
 }
 
 .stat-blue {
@@ -547,12 +578,30 @@ RESPONSIVE
 
 .aksi {
   display: flex;
-  gap: 12px;
+  gap: 8px;
+  justify-content: center;
 }
 
 .aksi a {
-  font-size: 18px;
-  text-decoration: none;
+  width: 38px;
+  height: 38px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 10px;
+}
+
+@media (max-width: 768px) {
+  .aksi {
+    gap: 5px;
+  }
+
+  .aksi a {
+    width: 34px;
+    height: 34px;
+  }
 }
 
 .form-card {
@@ -1104,6 +1153,12 @@ body {
 }
 @media (max-width: 768px) {
   .stat-grid {
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
+}
+@media (max-width: 768px) {
+  .stat-grid {
     grid-template-columns: repeat(2, 1fr);
   }
 }
@@ -1288,4 +1343,21 @@ body {
     gap: 25px;
     text-align: center;
   }
+}
+@media (max-width: 768px) {
+  .table-filter {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .table-filter select,
+  .table-filter input,
+  .table-filter button {
+    width: 100%;
+  }
+}
+
+.table-responsive {
+  overflow-x: auto;
 }

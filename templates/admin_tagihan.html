@@ -30,11 +30,9 @@
     <select name="status">
       <option value="">Semua Status</option>
 
-      ```
       <option value="Belum Dibayar">Belum Dibayar</option>
 
       <option value="Sudah Dibayar">Lunas</option>
-      ```
     </select>
 
     <input type="text" name="search" placeholder="Cari pelanggan..." />
@@ -44,74 +42,75 @@
       Filter
     </button>
   </form>
+  <div class="table-responsive">
+    <table class="table-custom">
+      <thead>
+        <tr>
+          <th>No</th>
+          <th>Pelanggan</th>
+          <th>Bulan</th>
+          <th>Total</th>
+          <th>Status</th>
+          <th>Aksi</th>
+        </tr>
+      </thead>
 
-  <table class="table-custom">
-    <thead>
-      <tr>
-        <th>No</th>
-        <th>Pelanggan</th>
-        <th>Bulan</th>
-        <th>Total</th>
-        <th>Status</th>
-        <th>Aksi</th>
-      </tr>
-    </thead>
+      <tbody>
+        {% for item in tagihan %}
 
-    <tbody>
-      {% for item in tagihan %}
+        <tr>
+          <td>{{ loop.index }}</td>
 
-      <tr>
-        <td>{{ loop.index }}</td>
+          <td>{{ item.pelanggan.nama }}</td>
 
-        <td>{{ item.pelanggan.nama }}</td>
+          <td>{{ item.bulan }} {{ item.tahun }}</td>
 
-        <td>{{ item.bulan }} {{ item.tahun }}</td>
+          <td>Rp {{ "{:,}".format(item.total) }}</td>
 
-        <td>Rp {{ "{:,}".format(item.total) }}</td>
+          <td>
+            {% if item.status == "Sudah Dibayar" %}
 
-        <td>
-          {% if item.status == "Sudah Dibayar" %}
+            <span class="badge-lunas"> Lunas </span>
 
-          <span class="badge-lunas"> Lunas </span>
+            {% else %}
 
-          {% else %}
+            <span class="badge-belum"> Belum Bayar </span>
 
-          <span class="badge-belum"> Belum Bayar </span>
+            {% endif %}
+          </td>
 
-          {% endif %}
-        </td>
+          <td class="aksi">
+            <a
+              href="/admin/detail-tagihan/{{ item.id }}"
+              class="btn-detail"
+              title="Lihat Detail"
+            >
+              <i class="bi bi-eye-fill"></i>
+            </a>
 
-        <td class="aksi">
-          <a
-            href="/admin/detail-tagihan/{{ item.id }}"
-            class="btn-detail"
-            title="Lihat Detail"
-          >
-            <i class="bi bi-eye-fill"></i>
-          </a>
+            <a
+              href="/admin/edit-tagihan/{{ item.id }}"
+              class="btn-edit"
+              title="Edit"
+            >
+              <i class="bi bi-pencil-fill"></i>
+            </a>
 
-          <a
-            href="/admin/edit-tagihan/{{ item.id }}"
-            class="btn-edit"
-            title="Edit"
-          >
-            <i class="bi bi-pencil-fill"></i>
-          </a>
+            <a
+              href="/admin/hapus-tagihan/{{ item.id }}"
+              class="btn-hapus"
+              onclick="return confirm('Hapus tagihan ini?');"
+              title="Hapus"
+            >
+              <i class="bi bi-trash-fill"></i>
+            </a>
+          </td>
+        </tr>
 
-          <a
-            href="/admin/hapus-tagihan/{{ item.id }}"
-            class="btn-hapus"
-            onclick="return confirm('Hapus tagihan ini?');"
-            title="Hapus"
-          >
-            <i class="bi bi-trash-fill"></i>
-          </a>
-        </td>
-      </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
 
-      {% endfor %}
-    </tbody>
-  </table>
+  {% endblock %}
 </div>
-
-{% endblock %}
