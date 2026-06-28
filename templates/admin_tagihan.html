@@ -111,6 +111,46 @@
       </tbody>
     </table>
   </div>
+  <!-- MOBILE VERSION -->
+  <div class="tagihan-mobile">
+    {% for item in tagihan %}
 
+    <div class="mobile-card">
+      <div class="mobile-header">
+        <div>
+          <h4>{{ item.pelanggan.nama }}</h4>
+          <small>{{ item.bulan }} {{ item.tahun }}</small>
+        </div>
+
+        {% if item.status == "Sudah Dibayar" %}
+        <span class="badge-lunas">Lunas</span>
+        {% else %}
+        <span class="badge-belum">Belum Bayar</span>
+        {% endif %}
+      </div>
+
+      <div class="mobile-total">Rp {{ "{:,}".format(item.total) }}</div>
+
+      <div class="mobile-actions">
+        <a href="/admin/detail-tagihan/{{ item.id }}" class="btn-detail">
+          <i class="bi bi-eye-fill"></i>
+        </a>
+
+        <a href="/admin/edit-tagihan/{{ item.id }}" class="btn-edit">
+          <i class="bi bi-pencil-fill"></i>
+        </a>
+
+        <a
+          href="/admin/hapus-tagihan/{{ item.id }}"
+          class="btn-hapus"
+          onclick="return confirm('Hapus tagihan ini?');"
+        >
+          <i class="bi bi-trash-fill"></i>
+        </a>
+      </div>
+    </div>
+
+    {% endfor %}
+  </div>
   {% endblock %}
 </div>
